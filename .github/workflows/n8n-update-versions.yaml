@@ -1,0 +1,43 @@
+name: n8n update version
+
+on:
+  schedule:
+    - cron: '00 12 * * 6'
+  workflow_dispatch:
+
+jobs:
+  n8n_latest_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: n8n_latest_version
+        name: Get latest n8n version
+        run: latest_release=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/n8nio/n8n/tags?page_size=1024' | jq '."results"[]["name"]' | grep -E -o '\b[0-9]+\.[0-9]+\.[0-9]+\b' | sort --human-numeric-sort -r | head -n 1) && echo "latest_release=$latest_release" >> $GITHUB_OUTPUT
+
+      - name: Update CHANGELOG.md
+        run: |
+          wget https://raw.githubusercontent.com/n8n-io/n8n/master/CHANGELOG.md -O n8n/CHANGELOG.md
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff --quiet || (git add n8n/CHANGELOG.md && git commit -m "chore: updated CHANGELOG.md")
+          git push
+
+      - name: Update versions
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          createPR: false
+          commitChange: true
+          masterBranchName: main
+          targetBranch: main
+          branch: main
+          message: 'chore: update n8n version to ${{ steps.n8n_latest_version.outputs.latest_release }}'
+          changes: |
+            {
+              "n8n/config.yaml": {
+                "version": "${{ steps.n8n_latest_version.outputs.latest_release }}"
+              },
+              "n8n/build.yaml": {
+                "args.N8N_VERSION": "${{ steps.n8n_latest_version.outputs.latest_release }}"
+              }
+            }

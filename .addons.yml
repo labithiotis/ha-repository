@@ -1,0 +1,7 @@
+---
+channel: stable
+addons:
+  n8n:
+    repository: hassio-addons/addon-n8n
+    target: n8n
+    image: ghcr.io/hassio-addons/n8n/{arch}
