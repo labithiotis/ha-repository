@@ -13,7 +13,7 @@ jobs:
 
       - id: n8n_latest_version
         name: Get latest n8n version
-        run: latest_release=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/n8nio/n8n/tags?page_size=1024' | jq '."results"[]["name"]' | grep -E -o '\b[0-9]+\.[0-9]+\.[0-9]+\b' | sort --human-numeric-sort -r | head -n 1) && echo "latest_release=$latest_release" >> $GITHUB_OUTPUT
+        run: latest_release=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/n8nio/n8n/tags?page_size=1024' | jq '."results"[]["name"]' | grep -E -o '^[0-9]+\.[0-9]+\.[0-9]+$' | sort --human-numeric-sort -r | head -n 1) && echo "latest_release=$latest_release" >> $GITHUB_OUTPUT
 
       - name: Update CHANGELOG.md
         run: |
