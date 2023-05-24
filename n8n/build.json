@@ -1,9 +1,0 @@
-{
-  "build_from": {
-    "aarch64": "docker.io/n8nio/n8n",
-    "amd64": "docker.io/n8nio/n8n",
-    "armhf": "docker.io/n8nio/n8n",
-    "armv7": "docker.io/n8nio/n8n",
-    "i386": "docker.io/n8nio/n8n"
-  }
-}
