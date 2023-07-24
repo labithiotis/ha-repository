@@ -11,7 +11,6 @@ if [ -z "${N8N_BASIC_AUTH_USER}" ] || [ -z "${N8N_BASIC_AUTH_ACTIVE}" ]; then
   unset N8N_BASIC_AUTH_PASSWORD
 fi
 
-export $SUPERVISOR_TOKEN
 export TZ="${GENERIC_TIMEZONE}"
 
 n8n start
