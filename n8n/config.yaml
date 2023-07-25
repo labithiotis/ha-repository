@@ -15,6 +15,7 @@ apparmor: false
 host_network: true
 hassio_api: true
 homeassistant_api: true
+stdin: true
 panel_icon: mdi:transit-connection-variant
 panel_title: n8n
 webui: '[PROTO:option_name]://[HOST]:[PORT:5678]/'
