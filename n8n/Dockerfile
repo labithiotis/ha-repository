@@ -12,8 +12,12 @@ FROM $BUILD_FROM:${N8N_VERSION}
 RUN echo n8n version ${N8N_VERSION}
 RUN echo build version ${BUILD_VERSION}
 
-# RUN apk update && apk upgrade && apk add --no-cache jq
+USER root
+RUN apk add --no-cache jq
+USER user
+
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
+
 ENTRYPOINT ["sh", "/tmp/docker-entrypoint.sh"]
 
 LABEL \
