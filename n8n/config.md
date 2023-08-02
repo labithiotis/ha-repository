@@ -30,6 +30,6 @@ copy(
     })
     .filter((s) => !!s)
     .sort()
-    .join(',\n')
+    .join('\n')
 );
 ```
