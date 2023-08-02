@@ -16,6 +16,8 @@ USER root
 RUN apk add --no-cache jq
 USER node
 
+WORKDIR /data
+
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
 ENTRYPOINT ["sh", "/tmp/docker-entrypoint.sh"]
