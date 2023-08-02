@@ -13,14 +13,16 @@ RUN echo n8n version ${N8N_VERSION}
 RUN echo build version ${BUILD_VERSION}
 
 USER root
-RUN apk add --no-cache jq
+RUN apk add --no-cache --update jq bash
 USER node
 
 WORKDIR /data
 
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
-ENTRYPOINT ["sh", "/tmp/docker-entrypoint.sh"]
+ENTRYPOINT ["bash", "/tmp/docker-entrypoint.sh"]
+
+EXPOSE 5678/tcp
 
 LABEL \
     io.hass.name="${BUILD_NAME}" \
