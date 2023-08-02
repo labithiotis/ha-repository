@@ -14,7 +14,7 @@ RUN echo build version ${BUILD_VERSION}
 
 USER root
 RUN apk add --no-cache jq
-USER user
+USER node
 
 COPY docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
