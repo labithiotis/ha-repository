@@ -7,4 +7,6 @@ done
 
 export TZ="${GENERIC_TIMEZONE}"
 
-exec su-exec node n8n start
+chown -R node:node /home/node
+
+n8n start

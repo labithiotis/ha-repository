@@ -14,7 +14,7 @@ RUN echo build version ${BUILD_VERSION}
 
 USER root
 
-RUN apk add --no-cache --update jq bash su-exec
+RUN apk add --no-cache --update jq bash
 
 WORKDIR /data
 
