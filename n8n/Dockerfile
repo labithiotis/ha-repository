@@ -13,8 +13,8 @@ RUN echo n8n version ${N8N_VERSION}
 RUN echo build version ${BUILD_VERSION}
 
 USER root
+
 RUN apk add --no-cache --update jq bash
-USER node
 
 WORKDIR /data
 
