@@ -5,6 +5,7 @@ for s in $(cat /data/options.json | jq -r "to_entries|map(\"\(.key)=\(.value|tos
   export $s
 done
 
+export $SUPERVISOR_TOKEN
 export TZ="${GENERIC_TIMEZONE}"
 
 n8n start
