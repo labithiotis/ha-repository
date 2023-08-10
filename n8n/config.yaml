@@ -11,7 +11,7 @@ arch:
   - i386
 icon: icon.png
 logo: icon.png
-apparmor: false
+apparmor: true
 host_network: true
 hassio_api: true
 homeassistant_api: true
