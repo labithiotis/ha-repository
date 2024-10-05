@@ -2,7 +2,7 @@ name: n8n
 slug: n8n
 url: https://n8n.io
 description: Workflow automation
-version: 1.60.1
+version: 1.61.0
 arch:
   - aarch64
   - amd64
